@@ -43,8 +43,11 @@
     isTouchDevice = 'ontouchstart' in document.documentElement;
 
     // Load supporting scripts
+    //Util.load_scripts(["webutil.js", "base64.js", "websock.js", "des.js",
+    //                   "input.js", "display.js", "jsunzip.js", "rfb.js"]);
+
     Util.load_scripts(["webutil.js", "base64.js", "websock.js", "des.js",
-        "input.js", "display.js", "jsunzip.js", "rfb.js"]);
+                       "input.js", "display.js", "jsunzip.js", "rfb.js"]);
 
     var rfb;
 
@@ -179,6 +182,7 @@
         // By default, use the host and port of server that served this file
         host = '{{ ws_host }}';
         port = '{{ ws_port }}';
+	path = '{{ ws_path }}';
         password = '{{ console_passwd }}';
 
         if ((!host) || (!port)) {

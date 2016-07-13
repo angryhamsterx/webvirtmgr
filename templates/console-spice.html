@@ -161,6 +161,13 @@
             msg.build_msg(SPICE_MSGC_INPUTS_KEY_UP, key);
             sc.inputs.send_msg(msg);
 
+            var uri;
+            if (window.location.protocol === "https:") {
+                uri = 'wss://{{ ws_host }}:{{ ws_port }}/{{ ws_path }}';
+            } else {
+                uri = 'ws://{{ ws_host }}:{{ ws_port }}/{{ ws_path }}';
+            }
+
             if(Ctrl_state == false) update_modifier(false, KEY_LCtrl, sc);
             if(Alt_state == false) update_modifier(false, KEY_Alt, sc);
         }

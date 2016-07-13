@@ -3,7 +3,7 @@ import os
 import logging
 
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -32,7 +32,7 @@ ALLOWED_HOSTS = ['*']
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
 # In a Windows environment this must be set to your system time zone.
-TIME_ZONE = 'Europe/Zaporozhye'
+TIME_ZONE = 'Europe/Moscow'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
@@ -64,7 +64,8 @@ MEDIA_URL = '/media/'
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
-STATIC_ROOT = os.path.join(os.path.dirname(__file__), '..', 'static')
+#STATIC_ROOT = os.path.join(os.path.dirname(__file__), '..', 'static')
+STATIC_ROOT = os.path.join(os.path.dirname(__file__), 'static')
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
@@ -106,6 +107,8 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'webvirtmgr.urls'
 
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
+
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'webvirtmgr.wsgi.application'
 
@@ -146,7 +149,9 @@ LOCAL_PATH = None
 TIME_JS_REFRESH = 2000
 WS_PORT = 6080
 WS_HOST = '0.0.0.0'
-WS_PUBLIC_HOST = None
+WS_PUBLIC_HOST = 'webvirtmgr.lanlife.net'
+WS_PUBLIC_PORT = 443
+WS_PUBLIC_PATH = '/ws'
 WS_CERT = None
 WS_KEY = None
 
@@ -208,7 +213,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'django.contrib.admin',
+    #'django.contrib.admin',
     'webvirtmgr',
     'servers',
     'instance',
