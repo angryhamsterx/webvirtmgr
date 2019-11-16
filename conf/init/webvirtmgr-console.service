@@ -2,8 +2,10 @@
 Description=WebVirtMgr NoVNC proxy
 
 [Service]
-ExecStart=/usr/lib/python2.7/site-packages/webvirtmgr/console/webvirtmgr-console
 Type=simple
+User=www-data
+Group=www-data
+ExecStart=/usr/bin/python /var/www/webvirtmgr/console/webvirtmgr-console
 
 [Install]
 WantedBy=multi-user.target

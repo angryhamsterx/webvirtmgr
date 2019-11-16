@@ -2,8 +2,11 @@
 Description=WebVirtMgr Gunicorn Server
  
 [Service]
-WorkingDirectory=/usr/lib/python2.7/site-packages/webvirtmgr
-ExecStart=/usr/bin/python /usr/lib/python2.7/site-packages/webvirtmgr/manage.py run_gunicorn -c /usr/lib/python2.7/site-packages/webvirtmgr/conf/gunicorn.conf.py
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/webvirtmgr
+ExecStart=/usr/bin/python /var/www/webvirtmgr/manage.py run_gunicorn -c /var/www/webvirtmgr/conf/gunicorn.conf.py
  
 [Install]
 WantedBy=multi-user.target
